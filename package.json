@@ -6,7 +6,7 @@
         "start": "node app/bin/www.js ",
         "build": "tsc --watch",
         "mon": "nodemon ./app/bin/www --delay 1",
-        "watch": "concurrently -k \"yarn build \" \"yarn mon\" "
+        "dev": "concurrently -k \"yarn build \" \"yarn mon\" "
     },
     "dependencies": {
         "@types/dotenv": "^4.0.3",
