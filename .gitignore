@@ -1,0 +1,8 @@
+node_modules/*
+npm-debug.log
+.settings/*
+yarn-error.log
+yarn.lock
+.vscode/*
+app/*
+.directory

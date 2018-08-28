@@ -1,0 +1,32 @@
+{
+    "name": "app",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "start": "node app/bin/www.js ",
+        "build": "tsc --watch",
+        "mon": "nodemon ./app/bin/www --delay 1",
+        "watch": "concurrently -k \"yarn build \" \"yarn mon\" "
+    },
+    "dependencies": {
+        "@types/dotenv": "^4.0.3",
+        "body-parser": "^1.17.1",
+        "concurrently": "^3.5.1",
+        "cookie-parser": "^1.4.3",
+        "dotenv": "^6.0.0",
+        "error-handler": "^1.0.0",
+        "express": "^4.16.3",
+        "morgan": "^1.9.0",
+        "nodemon": "^1.17.5",
+        "reflect-metadata": "^0.1.12",
+        "typescript": "^2.9.2"
+    },
+    "devDependencies": {
+        "@types/body-parser": "^1.17.0",
+        "@types/cookie-parser": "^1.4.1",
+        "@types/ejs": "^2.6.0",
+        "@types/express": "^4.16.0",
+        "@types/morgan": "^1.7.35",
+        "@types/node": "^10.5.2"
+    }
+}
