@@ -11,8 +11,6 @@ import { Storage } from '@google-cloud/storage'
 
 const app = express()
 dotenv.config()
-process.env.UV_THREADPOOL_SIZE = '128'
-console.log(process.env.UV_THREADPOOL_SIZE)
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -26,8 +24,8 @@ app.get('/', function(req, res) {
 })
 
 app.get('/video', async function(req, res) {
-    const bucketName = 'monkey-test'
-    const keyFilename = 'Monkey-Online-Upload-ee159ae2b686.json'
+    const bucketName = process.env.BUCKET
+    const keyFilename = process.env.KEY
     const storage = new Storage({
         keyFilename
     })
@@ -35,18 +33,8 @@ app.get('/video', async function(req, res) {
     const bucket = storage.bucket(bucketName)
     const blob = bucket.file('1 Hour Relaxing Ocean Waves.mp4')
     const range = req.headers.range as string
-    console.log(range)
     const metadata = await blob.getMetadata()
     const fileSize = metadata[0].size
-    // const head = {
-    //     // 'Content-Range': `bytes 0-${size}/*`,
-    //     'Accept-Ranges': 'bytes'
-    // }
-    // res.writeHead(206, head)
-    // const stream = blob.createReadStream()
-    // // console.log(metadata)
-    // console.log(stream)
-    // stream.pipe(res)
     if (range) {
         const parts = range.replace(/bytes=/, '').split('-')
         const start = parseInt(parts[0], 10)
@@ -72,7 +60,7 @@ app.get('/video', async function(req, res) {
 })
 
 app.use('/api', index)
-//catch 404 and forward to error handler
+
 const PORT = process.env.PORT
 app.listen(PORT, () => {
     console.log(`listening on port ${PORT}`)
