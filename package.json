@@ -3,15 +3,13 @@
     "version": "0.1.0",
     "private": true,
     "scripts": {
-        "start": "node app/bin/www.js ",
-        "build": "tsc --watch",
-        "mon": "nodemon ./app/bin/www --delay 1",
-        "dev": "concurrently -k \"yarn build \" \"yarn mon\" "
+        "dev": "nodemon --exec ts-node src/app.ts "
     },
     "dependencies": {
+        "@google-cloud/storage": "^2.1.0",
         "@types/dotenv": "^4.0.3",
+        "@types/google-cloud__storage": "^1.7.2",
         "body-parser": "^1.17.1",
-        "concurrently": "^3.5.1",
         "cookie-parser": "^1.4.3",
         "dotenv": "^6.0.0",
         "error-handler": "^1.0.0",

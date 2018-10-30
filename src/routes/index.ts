@@ -2,6 +2,7 @@
 
 import express from 'express'
 import testRouter from './test'
+import gcsRouter from './gcs'
 const router = express.Router()
 
 router.get('/', (req, res) => {
@@ -9,4 +10,6 @@ router.get('/', (req, res) => {
 })
 
 router.use('/test', testRouter)
+router.use('/gcs', gcsRouter)
+
 export default router
